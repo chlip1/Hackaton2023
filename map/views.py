@@ -41,7 +41,7 @@ def search(request):
     lat = location.lat
     lng = location.lng
     country = location.country
-    data = pd.read_csv("C:\\Users\\bieni\Hackaton2023-main\\average-latitude-longitude-countries.csv")
+    data = pd.read_csv("./average-latitude-longitude-countries.csv")
     latitude = data['Latitude'].tolist()
     longitude = data['Longitude'].tolist()
     print(latitude)
@@ -85,7 +85,7 @@ def obszar(request):
     lat = location.lat
     lng = location.lng
     country = location.country
-    data = pd.read_csv("C:\\Users\\bieni\Hackaton2023-main\\average-latitude-longitude-countries.csv")
+    data = pd.read_csv("./average-latitude-longitude-countries.csv")
     latitude = data['Latitude'].tolist()
     longitude = data['Longitude'].tolist()
     print(latitude)
