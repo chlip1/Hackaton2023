@@ -104,7 +104,7 @@ def obszar(request):
                 <circle r="10" fill="#69b3a2"/>
             </svg></div>""")).add_to(m)
 
-    folium.Marker([lat, lng], tooltip='Click for more',
+    folium.Marker([lat, lng], tooltip='check',
                   popup=country).add_to(m)
     # Get HTML Representation of Map Object
     m = m._repr_html_()
