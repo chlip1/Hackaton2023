@@ -6,37 +6,17 @@ import folium
 import geocoder
 import pandas as pd
 
+#import func from loc.py
+from ClassGetFiles import getData
+from prepareFiles import deleteTooFar
 # Create your views here.
 
 locations = []
 
 def index(request):
     
-    if request.method == 'POST':
-        form = SearchForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/')
-    else:
-        form = SearchForm()
-    address = Search.objects.all().last()
-    location = geocoder.osm(address)
-    lat = location.lat
-    lng = location.lng
-    country = location.country
-    data = pd.read_csv("C:\\Users\\bieni\Hackaton2023-main\\average-latitude-longitude-countries.csv")
-    latitude = data['Latitude'].tolist()
-    longitude = data['Longitude'].tolist()
-    print(latitude)
-    locations.append([lat,lng])
-    print(locations)
-    if lat == None or lng == None:
-        address.delete()
-        return HttpResponse('You address input is invalid')
-
-
-    # Create Map Object
-    m = folium.Map(location=[55, 18], zoom_start=10)
+    
+   
     #
     # for x in range(0, len(longitude)):
     #     folium.Marker((latitude[x],longitude[x]), icon=folium.DivIcon(html=f"""
@@ -48,18 +28,69 @@ def index(request):
     #               popup=country).add_to(m)
     # Get HTML Representation of Map Object
     # m = m._repr_html_()
-    context = {
-        'm': m,
-        'form': form,
-    }
-    return render(request, 'index.html', context)
+ 
+    return render(request, 'index.html')
+
 locations = []
+
 def search(request):
+    data = getData()
+
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/search')
+    else:
+        form = SearchForm()
+    address = Search.objects.all().last()
+    location = geocoder.osm(address)
+
+    lat = location.lat
+    lng = location.lng
+
+    # country = location.country
+    # data = pd.read_csv("./average-latitude-longitude-countries.csv")
+    # latitude = data['Latitude'].tolist()
+    # longitude = data['Longitude'].tolist()
+    # print(latitude)
+    # locations.append([lat, lng])
+    # print(locations)
+
+    if lat == None or lng == None:
+        address.delete()
+        return HttpResponse('You address input is invalid')
+
+    deleteTooFar(data, lat, lng)
+    
+    # Create Map Object
+    m = folium.Map(location=[54.37 , 18.58 ], zoom_start=12)
+
+    # for x in range(0, len(longitude)):
+    #     folium.Marker((latitude[x], longitude[x]), icon=folium.DivIcon(html=f"""
+    #         <div><svg>
+    #             <circle r="10" fill="#69b3a2"/>
+    #         </svg></div>""")).add_to(m)
+
+    # folium.Marker([lat, lng], tooltip='Click for more',
+    #               popup=country).add_to(m)
+    # Get HTML Representation of Map Object
+
+    m = m._repr_html_()
+    context = {
+        'm': m,
+        'form': form,
+    }
+    return render(request, 'search.html', context)
+
+def obszar(request):
+
+
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/search')
     else:
         form = SearchForm()
     address = Search.objects.all().last()
@@ -67,7 +98,7 @@ def search(request):
     lat = location.lat
     lng = location.lng
     country = location.country
-    data = pd.read_csv("C:\\Users\\bieni\Hackaton2023-main\\average-latitude-longitude-countries.csv")
+    data = pd.read_csv("./average-latitude-longitude-countries.csv")
     latitude = data['Latitude'].tolist()
     longitude = data['Longitude'].tolist()
     print(latitude)
@@ -78,7 +109,7 @@ def search(request):
         return HttpResponse('You address input is invalid')
 
     # Create Map Object
-    m = folium.Map(location=[1, 25], zoom_start=1)
+    m = folium.Map(location=[54.37 , 18.58 ], zoom_start=12)
 
     for x in range(0, len(longitude)):
         folium.Marker((latitude[x], longitude[x]), icon=folium.DivIcon(html=f"""
@@ -94,5 +125,4 @@ def search(request):
         'm': m,
         'form': form,
     }
-    return render(request, 'search.html', context)
-
+    return render(request, 'obszar.html', context)
