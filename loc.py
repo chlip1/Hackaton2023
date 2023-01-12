@@ -3,8 +3,6 @@ import json
 import os
 import pandas as pd
 
-data_list = []
-
 class CsvFiles():
     def __init__(self, path) -> None:
         self.name = self.getName(path)
@@ -21,29 +19,29 @@ class CsvFiles():
         data = data.drop(['link'], axis=1)
         return data
 
-path = 'data/'
-files = []
+def getData():
+    data_list, files = [], []
+    path = 'data/'
+    for r, d, f in os.walk(path):
+        for file in f:
+            files.append(os.path.join(r, file))
 
-for r, d, f in os.walk(path):
-    for file in f:
-        files.append(os.path.join(r, file))
+    for f in files:
+        d = CsvFiles(f)
+        data_list.append(d)
 
-for f in files:
-    d = CsvFiles(f)
-    data_list.append(d)
-
-length = 0
+    return data_list
 
 # for i in data_list:
     # length = length + (len(i.data))
     # print(i.lat,i.lon,i.type)
 
-print(length)
+# print(length)
 
-lat_1 = 54.35379183893733
-lon_1 = 18.592863067989025
-lat_2 = 54.35516237294401	
-lon_2 = 18.64964134202087
+# lat_1 = 54.35379183893733
+# lon_1 = 18.592863067989025
+# lat_2 = 54.35516237294401	
+# lon_2 = 18.64964134202087
 
 # # call the OSMR API
 # distances = []

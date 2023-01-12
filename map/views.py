@@ -6,6 +6,9 @@ import folium
 import geocoder
 import pandas as pd
 
+#import func from loc.py
+from loc import getData
+
 # Create your views here.
 
 locations = []
@@ -27,8 +30,11 @@ def index(request):
     # m = m._repr_html_()
  
     return render(request, 'index.html')
+
 locations = []
+
 def search(request):
+    print(getData())
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
