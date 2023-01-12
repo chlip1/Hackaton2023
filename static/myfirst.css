@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+body{
+  margin: 0 auto;
+  background-image: url("/static/gdansk.jpg");
+  background-size: cover;
+}
+h1, h2, h3, h4, ul, li, a,b, text, input, label, button, div{
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  color: #303030;
+}
+p{
+  margin: 0;
+  padding: 5px;
+  font-family: 'Quicksand', sans-serif;
+  color:   #303030;
+}
+ul{
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+}
+nav{
+  display: flex;
+  height: 45px;
+  padding-bottom: 5px;
+  justify-content: space-between;
+  align-items: flex-end;
+  box-shadow: 0px 0px 10px #9a9a9a;
+  background-image:url("/static/gdansk.jpg");
+  background-size: cover;
+}
+nav ul{
+  display: flex;
+  align-items: center;
+}
+nav li{
+  margin-left:0px;
+}
+nav li a{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+form h2{
+  font-size: 2.4em;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+.form{
+  width: 360px;
+  margin: 15 auto;
+  padding: 30px;
+  box-shadow: 2px 5px 7px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 5px #a2a2a2;
+  border-radius: 10px;
+  background:#ffffff;
+}
+.btn-nav{
+  border-radius: 25px;
+  background: #000000;
+  color: #fafafa;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.grey{
+    color: #9a9a9a;
+}
+.light-grey{
+    color: #c9c9c9;
+}
+.xlarge{
+    font-size:29px!important
+}
+.white{
+    color: rgb(201, 201, 201);
+}
+.xxxlarge{
+    font-size:42px!important
+}
+.animate-left{
+    position:relative;
+    animation:animateleft 1s
+}
+.animate-right{
+    position:relative;
+    animation:animateright 1.5s
+}
+.theme {
+    color:#fff !important;
+    background-color:#000000 !important
+}
+.center{
+    text-align: center;
+}
+.describe{
+    text-align: center;
+    margin-top: 40px;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 26px;
+}
+.container {
+    justify-content: center;
+    /* display: flex; */
+    margin-top: 3%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: 3%;
+    /* max-width: none; */
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+}
+@keyframes animateright{
+    from{
+        right:-500px;
+        opacity:0
+    } to{
+    right:0;
+    opacity:10}
+}
+@keyframes animateleft{
+    from{
+        left:-500px;
+        opacity:0
+    } to{
+    left:0;
+    opacity:10}
+}
