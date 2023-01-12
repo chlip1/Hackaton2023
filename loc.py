@@ -21,7 +21,6 @@ class CsvFiles():
         data = data.drop(['link'], axis=1)
         return data
 
-class 
 path = 'data/'
 files = []
 
