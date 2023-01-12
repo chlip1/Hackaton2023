@@ -36,7 +36,7 @@ def index(request):
 
     
     # Create Map Object
-    m = folium.Map(location=[19, -12], zoom_start=2)
+    m = folium.Map(location=[54.37 , 18.58 ], zoom_start=12)
 
     for x in range(0, len(longitude)):
         folium.Marker((latitude[x],longitude[x]), icon=folium.DivIcon(html=f"""
