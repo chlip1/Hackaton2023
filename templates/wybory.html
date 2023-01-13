@@ -26,6 +26,15 @@
                 <div class="mapa">
                     {{ m|safe }}
                 </div>
+                {% if %}
+                <div class="column-map">
+                    <div class="container-leg">
+                        <h3>Legenda</h3><br>
+                        <br>
+                        
+                        <h3>Dana lokalizacja {{wynik}} %</h3>
+                    </div>
+                </div>
             </div>
             <div class="column-navig ">
                 <div class="container-nav">
@@ -46,6 +55,7 @@
                     <br>
                     <button class="btn-navig" type="submit">Wyświetl mapę</button>
                     <br>
+                    <!-- <h3>{{wynik}} %</h3> -->
                 </div>
             </div>
         </div>
