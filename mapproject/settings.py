@@ -106,6 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_CLASS_CONVERTERS = {'textinput':"input-text"}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
