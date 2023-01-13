@@ -28,16 +28,16 @@
                 </div>
                 <div class="column-leg">
                     <div class="container-leg">
-                        <br><h3>Legenda</h3><h4>
+                        <h3>Legenda</h3><h4>
                         <img src="/static/jedzenie.jpg" alt="">Jedzenie  <img src="/static/transport.jpg" alt="">Transport  
                         <img src="/static/kultura.jpg" alt="">Kultura i nauka  <img src="/static/roz.jpg" alt="">Sport i rekreacja  
                         <img src="/static/zawody.jpg" alt="">Praca  <img src="/static/nieb.jpg" alt="">Zdrowie  <img src="/static/czar.jpg" alt="">Wiara  
-                        <img src="/static/pomaran.jpg" alt="">Reszta</h4>
-                        <h3>Dana lokalizacja w {{wynik}} % spełnia założenia miasta 15-minutowego</h3>
-                        <h3>W odległości 15 minut brakuje: 
-                        {% for item in bad_wynik %}
-                            <li>{{ item }}</li>
+                        <img src="/static/pomaran.jpg" alt="">Reszta</h4><br>
+                        <h3>W odległości 15 minut brakuje: {% for item in wynik_bad %}
+                            {{ item }},
                         {% endfor %}</h3>
+                        <h3>Dana lokalizacja w {{wynik}} % spełnia założenia miasta 15-minutowego</h3>
+                        
                         
                     </div>
                 </div>
