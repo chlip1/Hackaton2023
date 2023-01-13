@@ -21,6 +21,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', map_views.index, name='index'),
     # path('search/', map_views.search, name='search'),
-    path('obszar/', map_views.obszar, name='obszar'),
+    # path('obszar/', map_views.obszar, name='obszar'),
     path('wybory/', map_views.wybory, name='wybory'),
+    path('wybory_rower/', map_views.wybory_rower, name='wybory_rower'),
+    path('zielone/', map_views.zielone, name='zielone'),
+    path('dostepne/', map_views.dostepne, name='dostepne'),
+    path('innowacyjne/', map_views.innowacyjne, name='innowacyjne'),
+    path('wspolne/', map_views.wspolne, name='wspolne'),
+    path('mapa_kryteria/', map_views.mapa_kryteria, name='mapa_kryteria'),
 ]
