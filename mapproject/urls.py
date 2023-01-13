@@ -20,7 +20,7 @@ from map import views as map_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', map_views.index, name='index'),
-    path('search/', map_views.search, name='search'),
+    # path('search/', map_views.search, name='search'),
     path('obszar/', map_views.obszar, name='obszar'),
     path('wybory/', map_views.wybory, name='wybory'),
 ]
