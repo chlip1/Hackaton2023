@@ -1,0 +1,68 @@
+{% load crispy_forms_tags %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <link rel="stylesheet" href="{% static 'myfirst.css' %}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Wybory</title>
+    </head>
+    <body>
+        <nav>
+            <h1 style="margin-left: 2%;margin-bottom: 5px;"><a href="/" style="color: white;">HOME</a></h1>
+        </nav>
+        <header class="theme padding" id="myHeader">
+            <div class="center">
+                <br>
+                <h4 class="white animate-left text">BEST Coding Marathon 2023</h4><br>
+                <h2 class="grey animate-right xlarge  text">Smart City</h4><br>
+                <h1 class="light-grey xxxlarge animate-left text">Miasto 15-minutowe</h1>
+                <br>
+            </div>
+        </header>
+        <div class="row">
+            <div class="column-map">
+                <div class="mapa">
+                    {{ m|safe }}
+                </div>
+                <div class="column-leg">
+                    <div class="container-leg">
+                        <h3>Legenda</h3><h4>
+                            <h3>Skala spełnienia warunków miasta 15-minutowego:</h3><br>
+                            <img src="/static/czerw.jpg" alt="">0-25%  <img src="/static/pom.jpg" alt=""> 25-50%  
+                            <img src="/static/zol.jpg" alt="">50-75%  <img src="/static/jaszie.jpg" alt="">75-90%  
+                            <img src="/static/mocziel.jpg" alt="">90-100% 
+                    </div>
+                </div>
+            </div>
+            <div class="column-navig ">
+                <div class="container-nav">
+                    <label for="lokalizacja"><h3>Lokalizacja:</h3></label><br>
+                    <br>
+                    <form  method="POST" >
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <br>
+                        <button class="btn-navig" type="submit">Sprawdź</button><br>
+                    </form><br><br>
+                    <h3>Czym preferujesz się poruszać:</h3><br>
+                    <a href="/wybory" class="btn-navig" >Pieszo</a>
+                    <a href="/wybory_rower" class="btn-navig">Rower</a><br><br>
+                    <h3>Mapa spełniania kryteriów:</h3>
+                    <br>
+                    <a href="/mapa_kryteria" class="btn-navig" >Wyświetl mapę</a>
+                    <br><br>
+                    <br>
+                    <h3>Mapa obszarów do poprawy:</h3>
+                    <br>
+                    <a href="/zielone" class="btn-navig" >Zielone miasto</a>
+                    <a href="/wspolne" class="btn-navig">Wspólne miasto</a><br><br>
+                    <a href="/dostepne" class="btn-navig" >Dostępne miato</a>
+                    <a href="/innowacyjne" class="btn-navig">Innowacyjne miasto</a><br><br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
