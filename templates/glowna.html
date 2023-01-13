@@ -1,7 +1,13 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="{% static 'myfirst.css' %}">
+    <link rel="stylesheet" href="{% static 'myfirst.css' %}">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+    </head>
 <body>
     <nav>
         <h1 style="margin-left: 2%;margin-bottom: 5px;"><a href="/" style="color: white;">HOME</a></h1>
@@ -22,7 +28,7 @@
                 Wyznacza obszary, które najlepiej lub najgorzej <p>spełniają warunki miasta 15-sto minutowego</p><br>
                 Wyznacza obszary, które należy rozwinąć, aby miasto <p>spełniło cele strategiczne wyznaczone w Strategii Rozwoju Miasta</p> 
             </h3><br>
-            <a href="/" ><button class="btn-nav" >ROZPOCZNIJ</button></a>
+            <a href="{% url 'wybory' %}" ><button class="btn-nav" >ROZPOCZNIJ</button></a>
         </div>
     </div>
 </body>
