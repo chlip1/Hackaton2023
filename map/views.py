@@ -273,7 +273,7 @@ def zielone(request):
         else :
             clr = "None"
 
-        folium.Circle(location=[x[i], y[i]], radius=500, color=clr, fill_color=clr).add_to(m)
+        folium.Circle(location=[x[i], y[i]], radius=500, color="None", fill_color=clr).add_to(m)
 
     m = m._repr_html_()
     context = {
@@ -304,7 +304,7 @@ def wspolne(request):
             clr = "None"
 
 
-        folium.Circle(location=[x[i], y[i]], radius=500, color=clr, fill_color=clr).add_to(m)
+        folium.Circle(location=[x[i], y[i]], radius=500, color="None", fill_color=clr).add_to(m)
 
     m = m._repr_html_()
     context = {
@@ -335,7 +335,7 @@ def innowacyjne(request):
             clr = "None"
 
 
-        folium.Circle(location=[x[i], y[i]], radius=500, color=clr, fill_color=clr).add_to(m)
+        folium.Circle(location=[x[i], y[i]], radius=500, color="None", fill_color=clr).add_to(m)
     m = m._repr_html_()
     context = {
         'm': m,
@@ -365,7 +365,7 @@ def dostepne(request):
             clr = "None"
 
 
-        folium.Circle(location=[x[i], y[i]], radius=500, color=clr, fill_color=clr).add_to(m)
+        folium.Circle(location=[x[i], y[i]], radius=500, color="None", fill_color=clr).add_to(m)
 
     m = m._repr_html_()
     context = {
