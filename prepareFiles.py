@@ -10,7 +10,7 @@ def deleteTooFar(data, lat, lon):
         i.data = i.data.sort_values(by=['abs'])
         i.data = i.data[0:1]
         df = pd.merge(df, i.data, how='outer')
-        df['near'] = np.where(df['abs'] < 1.8, True, False)
+        df['near'] = np.where(df['abs'] < 1.3, True, False)
     return df
 
 def deleteTooFar_2(data, lat, lon):
@@ -22,5 +22,5 @@ def deleteTooFar_2(data, lat, lon):
         i.data = i.data.sort_values(by=['abs'])
         i.data = i.data[0:1]
         df = pd.merge(df, i.data, how='outer')
-        df['near'] = np.where(df['abs'] < 3.6, True, False)
+        df['near'] = np.where(df['abs'] < 3, True, False)
     return df
