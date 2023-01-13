@@ -58,7 +58,6 @@ def wybory(request):
 
     wynik=(f"{round((len(unique_list)/69*100),2)}")
     wynik_bad = (badd_list)
-    # print(getHeatMap())
  
     x = data["lat"].to_list()
     y = data['lon'].to_list()
