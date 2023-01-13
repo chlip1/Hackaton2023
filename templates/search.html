@@ -1,6 +1,9 @@
 {% load crispy_forms_tags %}
+{% load static %}
 <!doctype html>
 <html lang="en">
+    
+<link rel="stylesheet" href="{% static 'myfirst.css' %}">
 
 <head>
     <!-- Required meta tags -->
@@ -8,15 +11,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
 
-    <title>Home Page</title>
+    <title>Search</title>
 </head>
 
 <body>
+    <nav>
+        <h1 style="margin-left: 2%;margin-bottom: 5px;"><a href="/" style="color: white;">HOME</a></h1>
+        <h1 style="margin-left: 5%;margin-bottom: 5px;"><a href="{% url 'search' %}" style="color: white;">DANA LOKALIZAJA</a></h1>
+    </nav>
+    <header class="theme padding" id="myHeader">
+        <div class="center">
+            <br>
+            <h4 class="white animate-left text">BEST Coding Marathon 2023</h4><br>
+            <h2 class="grey animate-right xlarge  text">Smart City</h4><br>
+            <h1 class="light-grey xxxlarge animate-left text">Miasto 15-minutowe</h1>
+            <br>
+        </div>
+    </header>
+    <div class="describe">
+        <div class="container">
+            <form class="form-inline my-2 my-lg-0" method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn-nav" type="submit">Szukaj</button>
+            </form>
+        </div>
+    </div>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Geo KenBroTech</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,32 +63,25 @@
                 <button class="btn btn-outline-success my-2 my-sm-0 mx-3" type="submit">Search</button>
             </form>
         </div>
-    </nav>
+    </nav> -->
     <!--End Navbar-->
-    <div class="container">
+    <!-- <div class="container">
         <div class="row mt-4">
             <div class="col-md-10 offset-md-1">
                 {{ m|safe }}
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-    -->
+        crossorigin="anonymous"></script> -->
 </body>
 
 </html>
