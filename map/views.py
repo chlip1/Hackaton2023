@@ -7,6 +7,7 @@ import geocoder
 import pandas as pd
 from folium import IFrame
 from heatmap import getHeatMap
+from folium.plugins import HeatMap
 # import geemap.foliumap as geemap
  
 #import func from loc.py
@@ -94,7 +95,7 @@ def wybory(request):
                         fill=True).add_to(m)
         folium.Circle(
         location=[lat, lng],
-        radius=1800,
+        radius=1300,
         color='#8432e8',
         fill=False,
         fill_color=''
@@ -185,7 +186,7 @@ def wybory_rower(request):
                         fill=True).add_to(m)
         folium.Circle(
         location=[lat, lng],
-        radius=3600,
+        radius=3000,
         color='#8432e8',
         fill=False,
         fill_color=''
@@ -206,18 +207,6 @@ def wybory_rower(request):
     return render(request, 'wybory_rower.html', context)
  
 def mapa_kryteria(request):
- 
- 
-    if request.method == 'POST':
-        form = SearchForm(request.POST)
-        form2 = SearchForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/mapa_kryteria')
- 
-    else:
-        form = SearchForm()
- 
     address = Search.objects.all().last()
     location = geocoder.osm(address)
     lat = location.lat
@@ -227,8 +216,13 @@ def mapa_kryteria(request):
     x = data2['lat'].to_list()
     y = data2['lon'].to_list()
     wynik = data2['wynik'].to_list()
- 
- 
+    heatlist = []
+    for i in range(len(x)):
+        list = [x[i],y[i],wynik[i]]
+        heatlist.append(list)
+
+
+
     # Create Map Object
     m = folium.Map(location=[54.37 , 18.58 ], zoom_start=12)
     wynik1 = []
@@ -238,23 +232,21 @@ def mapa_kryteria(request):
             clr = '#ff0800'
         elif wynik1 >= 25 and wynik1 < 50 :
              clr = '#ff8800'
-        elif wynik1 >= 50 and wynik1 < 75 :
+        elif wynik1 >= 50 and wynik1 < 85 :
              clr = '#fff700'
-        elif wynik1 >= 75 and wynik1 < 90 :
+        elif wynik1 >= 85 and wynik1 < 90 :
              clr = '#80cd23'
         else:
             clr = '#02f502'
         wynik2 = (wynik1)/100
- 
-        folium.Circle(location=[x[i], y[i]], radius=10, color=clr, fill_color=clr, color_opacity=wynik2).add_to(m)
- 
- 
- 
+
+        folium.Circle(location=[x[i], y[i]], radius=500, color="None", fill_color=clr).add_to(m)
+
+    HeatMap(heatlist).add_to(m)
+
     m = m._repr_html_()
     context = {
         'm': m,
-        'form': form,
- 
     }
     return render(request, 'mapa_kryteria.html', context)
 
@@ -262,13 +254,121 @@ def dostepne(request):
     return render(request, 'dostepne.html')
 
 def zielone(request):
-    return render(request, 'zielone.html')
+    data2 = pd.read_csv("./heat_map.csv")
+    x = data2['lat'].to_list()
+    y = data2['lon'].to_list()
+    wynik = data2['zielone'].to_list()
+    heatlist = []
+    for i in range(len(x)):
+        list = [x[i],y[i],wynik[i]]
+        heatlist.append(list)
+
+    # Create Map Object
+    m = folium.Map(location=[54.37 , 18.58 ], zoom_start=12)
+    wynik1 = []
+    for i in range(0,len(x)):
+        wynik1 = wynik[i]
+        if wynik1 == False :
+            clr = "red"
+        else :
+            clr = "None"
+
+        folium.Circle(location=[x[i], y[i]], radius=500, color=clr, fill_color=clr).add_to(m)
+
+    m = m._repr_html_()
+    context = {
+        'm': m,
+    }
+    return render(request, 'zielone.html',context)
 
 def wspolne(request):
-    return render(request, 'wspolne.html')
+    data2 = pd.read_csv("./heat_map.csv")
+    x = data2['lat'].to_list()
+    y = data2['lon'].to_list()
+    wynik = data2['wspolne'].to_list()
+    heatlist = []
+    for i in range(len(x)):
+        list = [x[i],y[i],wynik[i]]
+        heatlist.append(list)
+
+
+
+    # Create Map Object
+    m = folium.Map(location=[54.37 , 18.58 ], zoom_start=12)
+    wynik1 = []
+    for i in range(0,len(x)):
+        wynik1 = wynik[i]
+        if wynik1 == False :
+            clr = "red"
+        else :
+            clr = "None"
+
+
+        folium.Circle(location=[x[i], y[i]], radius=500, color=clr, fill_color=clr).add_to(m)
+
+    m = m._repr_html_()
+    context = {
+        'm': m,
+    }
+    return render(request, 'wspolne.html',context)
 
 def innowacyjne(request):
-        return render(request, 'innowacyjne.html')
+    data2 = pd.read_csv("./heat_map.csv")
+    x = data2['lat'].to_list()
+    y = data2['lon'].to_list()
+    wynik = data2['innowacyjne'].to_list()
+    heatlist = []
+    for i in range(len(x)):
+        list = [x[i],y[i],wynik[i]]
+        heatlist.append(list)
 
-def mapa_kryteria(request):
-        return render(request, 'mapa_kryteria.html')
+
+
+    # Create Map Object
+    m = folium.Map(location=[54.37 , 18.58 ], zoom_start=12)
+    wynik1 = []
+    for i in range(0,len(x)):
+        wynik1 = wynik[i]
+        if wynik1 == False :
+            clr = "red"
+        else :
+            clr = "None"
+
+
+        folium.Circle(location=[x[i], y[i]], radius=500, color=clr, fill_color=clr).add_to(m)
+    m = m._repr_html_()
+    context = {
+        'm': m,
+    }
+    return render(request, 'innowacyjne.html',context)
+
+def dostepne(request):
+    data2 = pd.read_csv("./heat_map.csv")
+    x = data2['lat'].to_list()
+    y = data2['lon'].to_list()
+    wynik = data2['dostepne'].to_list()
+    heatlist = []
+    for i in range(len(x)):
+        list = [x[i],y[i],wynik[i]]
+        heatlist.append(list)
+
+
+
+    # Create Map Object
+    m = folium.Map(location=[54.37 , 18.58 ], zoom_start=12)
+    wynik1 = []
+    for i in range(0,len(x)):
+        wynik1 = wynik[i]
+        if wynik1 == False :
+            clr = "red"
+        else :
+            clr = "None"
+
+
+        folium.Circle(location=[x[i], y[i]], radius=500, color=clr, fill_color=clr).add_to(m)
+
+    m = m._repr_html_()
+    context = {
+        'm': m,
+    }
+    return render(request, 'dostepne.html',context)
