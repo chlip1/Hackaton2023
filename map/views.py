@@ -6,6 +6,7 @@ import folium
 import geocoder
 import pandas as pd
 from folium import IFrame
+from heatmap import getHeatMap
 # import geemap.foliumap as geemap
  
 #import func from loc.py
@@ -51,9 +52,13 @@ def wybory(request):
  
     data = deleteTooFar(data, lat, lng)
     title_list = data.loc[data['near'] == True, 'type'].tolist()
+    bad_list = data.loc[data['near'] == False, 'type'].tolist()
     unique_list = list(set(title_list))
+    badd_list = list(set(bad_list))
 
-    wynik=(len(unique_list)/69*100)
+    wynik=(f"{round((len(unique_list)/69*100),2)}")
+    wynik_bad = (badd_list)
+    # print(getHeatMap())
  
     x = data["lat"].to_list()
     y = data['lon'].to_list()
@@ -141,6 +146,7 @@ def wybory(request):
         'm': m,
         'form': form,
         'wynik': wynik,
+        'wynik_bad':wynik_bad,
     }
     return render(request, 'wybory.html', context)
  
