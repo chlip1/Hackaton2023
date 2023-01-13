@@ -78,7 +78,7 @@ form h2{
   margin-top: 30px;
   margin-left: 2%;
   margin-right: 2%;
-  margin-bottom: 3%;
+  margin-bottom: 8px;
   background-color: white;
   border-radius: 5px;
   padding: 10px;
@@ -166,9 +166,24 @@ form h2{
   padding: 10px;
   box-shadow: 0 0 10px 2px;
 }
+.container-leg {
+  justify-content: center;
+  margin-top: 0px;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 3%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px 2px;
+}
 .column-map {
   float: left;
   width: 70%;
+}
+.column-leg {
+  float: left;
+  width: 100%;
 }
 .column-navig {
   float: right;
